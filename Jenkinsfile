@@ -40,7 +40,7 @@ pipeline {
 
                         steps{
 
-                                script { sh 'terraform  apply -out ${BUILD_NUMBER}.tfplan'}
+                                script { sh 'terraform  apply -out ${BUILD_NUMBER}.tfplan -auto-approve'}
                         }
 }
 }
