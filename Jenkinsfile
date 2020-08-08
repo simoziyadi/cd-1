@@ -3,7 +3,7 @@ pipeline {
   agent {
     docker {
 
-      image 'hashicorp/terraform'
+      image 'hashicorp/terraform:light'
         registryUrl 'https://hub.docker.com/'
     }
   }
