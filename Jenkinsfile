@@ -14,7 +14,7 @@ pipeline {
 
 			steps {
             			script {
-              				def ciProperties = readProperties file: "cd.properties"
+              				def ciProperties = readProperties file: 'cd.properties'
               				env.deploy = ciProperties['deploy']
            			 }
         		  }
