@@ -14,13 +14,13 @@ pipeline {
 
 			steps {
             			script {
-              def ciProperties = readProperties file: "cd.properties"
-              env.deploy = ciProperties['deploy']
-            }
-          }
+              				def ciProperties = readProperties file: "cd.properties"
+              				env.deploy = ciProperties['deploy']
+           			 }
+        		  }
 
 
-}
+	}
 
    		stage('Stage 2: Terraform init'){
 
