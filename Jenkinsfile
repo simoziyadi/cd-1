@@ -10,17 +10,19 @@ pipeline {
 
 	stages {
 
-		stage('stage1: clonage'){
+		stage('Stage 1: Check Properties'){
 
-			steps{
+			steps {
+            			script {
+              def ciProperties = readProperties file: "cd.properties"
+              env.deploy = ciProperties['deploy']
+            }
+          }
 
-				 echo 'RIEN a Clonner'
+
 }
 
-
-}
-
-   		stage('stage2:teraform init'){
+   		stage('Stage 2: Terraform init'){
 
 			steps{
 				script { sh 'terraform -v ' }
@@ -28,21 +30,29 @@ pipeline {
 			}
 }
 
-		stage('stage3:teraform plan'){
-
+		stage('Stage 3: Terraform plan'){
+			when { environment name: 'deploy', value: 'true' }
                         steps{
 
                                 script { sh 'terraform plan -out ${BUILD_NUMBER}.tfplan'} 
                         }
 }
 
-	       stage('stage4:teraform apply'){
-
+	       stage('Stage 4: Terraform apply'){
+			when { environment name: 'deploy', value: 'true' }
                         steps{
 
                                 script { sh 'terraform  apply  ${BUILD_NUMBER}.tfplan '}
                         }
 }
+		
+		stage('stage5: terraform destroy'){
+			when { environment name: 'deploy', value: 'false' }
+			steps {
+				script { sh 'terraform destroy'}
+			}
+		
+		}
 }
 	post {
                 always {
