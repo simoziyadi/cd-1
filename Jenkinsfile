@@ -23,8 +23,8 @@ pipeline {
    		stage('stage2:teraform init'){
 
 			steps{
-
-				script { sh '/usr/bin/terraform/terraform init -backend-config=./secrets/init.tfvars ' }
+				script { sh 'terraform -v ' }
+				script { sh 'terraform init -backend-config=./secrets/init.tfvars ' }
 			}
 }
 
