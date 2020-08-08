@@ -1,6 +1,12 @@
 pipeline {
 
-agent any
+  agent {
+    docker {
+
+      image 'hashicorp/terraform'
+        registryUrl 'https://hub.docker.com/'
+    }
+  }
 
 	stages {
 
