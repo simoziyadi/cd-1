@@ -3,7 +3,7 @@ pipeline {
   agent {
     docker {
 
-      image 'hashicorp/terraform:full'
+      image 'zenika/terraform-azure-cli:latest'
    
     }
   }
