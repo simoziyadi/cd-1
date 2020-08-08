@@ -24,7 +24,7 @@ pipeline {
 
 			steps{
 
-				script { sh 'terraform init -backend-config=./secrets/init.tfvars ' }
+				script { sh '/usr/bin/terraform/terraform init -backend-config=./secrets/init.tfvars ' }
 			}
 }
 
