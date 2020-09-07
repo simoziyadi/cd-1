@@ -54,9 +54,9 @@ pipeline {
 		
 		}
 }
-	post {
-                always {
-                  step([$class: 'WsCleanup'])
-                }
-            }
+	post { 
+        always { 
+            cleanWs()
+        }
+    }
 }
