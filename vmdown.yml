@@ -4,4 +4,3 @@
     tasks:
       - name: Logging and stopping machine
         shell: ./down.sh
-~                                                                                                                                                                                            ~                                                                                                                                                                                            ~                                
