@@ -1,0 +1,21 @@
+---
+  - name: IaC Playbook
+    hosts: linux
+    become: true
+    tasks:
+      - name: Create VM  
+        azure_rm_virtualmachine:
+          client_id:
+          tenant:
+          secret: 
+          subscription_id: 
+          resource_group:
+          name: 
+          admin_username: 
+          admin_password: 
+          image:
+            offer: CentOS
+            publisher: OpenLogic
+            sku: '7.1'
+            version: latest
+          vm_size: Standard_B1s
