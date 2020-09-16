@@ -1,0 +1,31 @@
+---
+  - name: Stop virtual machine playbook
+    hosts: linux
+    become: true
+    tasks:
+      - name: Update Registry
+        apt:
+          update_cache: yes
+
+      - name: Install Packages
+        apt:
+          name:
+            - python-pexpect
+            - python3-pip
+
+      - name: Install Python modules
+        pip:
+          name:
+            - ansible[azure] 
+            - packaging
+            - pexpect
+            - msrestazure      
+
+      - name: VM Operations
+        azure_rm_virtualmachine:
+          client_id: 96de3350-0e63-4ba4-b858-2935c2dc12ea
+          tenant: 67007139-5721-4225-b1c1-dba1c8765f3c
+          secret: 2zbc~.fx6-El5fuzGN~jRt~KTSTG35mp9z
+          subscription_id: 619758a3-ad7a-4018-8095-43aa6d2658f3
+          resource_group: devops_group
+          name: devops
