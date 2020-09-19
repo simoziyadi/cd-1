@@ -1,6 +1,0 @@
----
-  - name: Start Azure VM
-    hosts: localhost 
-    tasks:
-      - name: Logging and running machine
-        shell: ./up.sh
